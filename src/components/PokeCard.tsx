@@ -1,10 +1,11 @@
-import React from 'react'
 import PokeDescription from './PokeDescription';
 import PokeImage from './PokeImage';
+import PokeName from './PokeName';
 
 function PokeCard() {
   return (
-    <div className='w-72 h-1/2 px-6 py-7 rounded bg-slate-500'>
+    <div className='w-72 h-1/2 px-2 rounded bg-slate-500'>
+      <PokeName/>
       <PokeImage/>
       <PokeDescription/>
     </div>
