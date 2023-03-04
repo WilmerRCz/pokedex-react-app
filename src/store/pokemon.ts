@@ -4,12 +4,16 @@ import { persist } from "zustand/middleware";
 type State = {
   name: string | null
   hp:  number | string | null
-  id: number
+  id: number,
+  image: string,
+  stats: []
 };
 type Actions = {
-  setName: (user: string) => void,
+  setName: (user: string) => void
   setHp: (hp: number) => void
   setId: (id: number) => void
+  setImage: (image: string) => void
+  setStats: (stats: []) => void,
 };
 
 export const usePokeStore = create(
@@ -30,7 +34,16 @@ export const usePokeStore = create(
         set((state) => ({
           id
         })),
-
+        image: '',
+        setImage: (image: string) =>
+        set((state) => ({
+          image
+        })),
+        stats: [],
+        setStats: (stats: []) =>
+        set((state) => ({
+          stats
+        })),
     }),
     {
       name: "pokemon",
