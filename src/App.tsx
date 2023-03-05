@@ -5,7 +5,12 @@ import { usePokeStore } from "./store/pokemon";
 import PokeButton from "./components/PokeButton";
 import { useEffect } from "react";
 import PokeId from "./components/PokeId";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowLeft,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   const id = usePokeStore((state) => state.id);
@@ -50,7 +55,19 @@ function App() {
     }
   }, [data, setName, setHp, setImage, setStats, setType]);
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading)
+    return (
+      <div className="text-white absolute inset-0 flex flex-col justify-center items-center">
+        <FontAwesomeIcon
+          icon={faSpinner}
+          size="3x"
+          style={{
+            transform: "rotate(0deg)",
+            animation: "spin 1s linear infinite",
+          }}
+        />
+      </div>
+    );
   else if (isError) return <div>Error: desde react query</div>;
 
   return (
@@ -58,7 +75,7 @@ function App() {
       <PokeId />
       <PokeCard />
       <div className="flex gap-8 mt-2">
-        <PokeButton onClick={handlePrev} icon={faArrowLeft}/>
+        <PokeButton onClick={handlePrev} icon={faArrowLeft} />
         <PokeButton onClick={handleNext} icon={faArrowRight} />
       </div>
     </div>
