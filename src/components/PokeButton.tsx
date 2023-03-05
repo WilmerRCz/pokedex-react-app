@@ -1,13 +1,15 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 interface Props {
   onClick?: () => void;
-  title: string;
+  icon: IconDefinition
 }
 
-function PokeButton({ onClick, title }: Props) {
+function PokeButton({ onClick, icon }: Props) {
   return (
-    <button className="bg-blue-500 rounded p-2" onClick={onClick}>
-      {title}
+    <button className="" onClick={onClick}>
+      <FontAwesomeIcon icon={icon} size="3x" />
     </button>
   );
 }

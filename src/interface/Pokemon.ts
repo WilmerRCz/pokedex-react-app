@@ -4,9 +4,10 @@ export interface Pokemon {
 }
 
 export interface Stats {
-  base_stat: number,
-  effort: number,
+  base_stat: number;
+  effort: number;
   stat: {
-    name: string
-  }
+    name: string;
+  };
 }
+

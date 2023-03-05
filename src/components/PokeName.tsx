@@ -7,7 +7,7 @@ function PokeName() {
     <div className="flex justify-between text-black font-bold">
       <h1 className="">{name}</h1>
       <p>
-        <span className="text-xs">hp:</span>{" "}
+        <span className="text-xs">hp: </span>
         <span className="text-md">{hp}</span>
       </p>
     </div>

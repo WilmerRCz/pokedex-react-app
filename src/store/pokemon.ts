@@ -6,14 +6,16 @@ type State = {
   hp:  number | string | null
   id: number,
   image: string,
-  stats: []
+  stats: [],
+  type: string
 };
 type Actions = {
   setName: (user: string) => void
   setHp: (hp: number) => void
   setId: (id: number) => void
   setImage: (image: string) => void
-  setStats: (stats: []) => void,
+  setStats: (stats: []) => void
+  setType: (type: string) => void,
 };
 
 export const usePokeStore = create(
@@ -43,6 +45,11 @@ export const usePokeStore = create(
         setStats: (stats: []) =>
         set((state) => ({
           stats
+        })),
+        type: 'normal',
+        setType: (type: string) =>
+        set((state) => ({
+          type
         })),
     }),
     {
