@@ -11,6 +11,9 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PokeNotFound from "./components/PokeNotFound";
+import PokeFoundId from "./components/PokeFoundId";
+
 
 function App() {
   const id = usePokeStore((state) => state.id);
@@ -28,8 +31,8 @@ function App() {
   });
 
   const handleNext = () => {
-    if (id >= 1279) {
-      return console.log("No hay mas pokemones");
+    if (id >= 1010) {
+      return alert("No hay mas pokemones");
     }
     setId(id + 1);
     queryClient.invalidateQueries({ queryKey: ["pokemon"] });
@@ -37,7 +40,7 @@ function App() {
 
   const handlePrev = () => {
     if (id <= 1) {
-      return console.log("No hay mas pokemones");
+      return alert("No hay mas pokemones");
     }
     setId(id - 1);
     queryClient.invalidateQueries({ queryKey: ["pokemon"] });
@@ -68,11 +71,13 @@ function App() {
         />
       </div>
     );
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError)
+    return <PokeNotFound/>
 
   return (
     <div className="text-white absolute inset-0 flex flex-col justify-center items-center">
       <PokeId />
+      <PokeFoundId/>
       <PokeCard />
       <div className="flex gap-8 mt-2">
         <PokeButton onClick={handlePrev} icon={faArrowLeft} />
